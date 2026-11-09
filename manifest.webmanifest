@@ -1,8 +1,8 @@
 {
-  "name": "آکادمی سایه | مسیر بیداری",
-  "short_name": "آکادمی سایه",
-  "lang": "fa",
-  "dir": "rtl",
+  "name": "Shadow Academy | Monarch Path",
+  "short_name": "Shadow Academy",
+  "lang": "en",
+  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

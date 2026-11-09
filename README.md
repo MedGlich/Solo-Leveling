@@ -1,16 +1,16 @@
-# آکادمی سایه | داشبورد شخصی مسیر بیداری
+# Shadow Academy — Personal Monarch Path Dashboard
 
-یک برنامهٔ وب پیش‌روندهٔ فارسی و راست‌چین، بدون وابستگی خارجی، فونت CDN یا تصویر اقتباسی. حال‌وهوای فانتزی تاریک با هویت بصری اختصاصی ساخته شده؛ هیچ لوگو یا اثر هنری متعلق به مجموعه‌های دیگر در آن نیست. همهٔ برنامه‌ریزی‌ها برای سازمان‌دهی عادت‌ها هستند، نه توصیهٔ پزشکی.
+A standalone, offline-first progressive web app for tracking study, focus, and daily habits. It uses no external dependencies, CDN fonts, or borrowed artwork. Its dark-fantasy theme and visual identity are original. Activities are habit-organization tools, not medical advice.
 
-## اجرا
+## Run the app
 
-- برای استفادهٔ سریع: `index.html` را مستقیماً باز کنید. فایل‌های JS کلاسیک‌اند، بنابراین منطق اصلی در `file://` هم کار می‌کند. ذخیره‌سازی محلی برای مبدأ file ممکن است بسته به مرورگر محدود/متفاوت باشد؛ برای پایداری و نصب PWA از سرور محلی یا GitHub Pages استفاده کنید.
-- سرور محلی: در پوشهٔ پروژه `python -m http.server 8000` اجرا و `http://localhost:8000` را باز کنید.
-- برای PWA و Service Worker، باید با HTTPS (از جمله GitHub Pages) یا localhost اجرا شود؛ Service Worker در `file://` فعال نیست.
+- **Quick start:** Open `index.html` directly. The JavaScript files are classic scripts, so the core logic also works from `file://`. Browser storage for file URLs may be limited or vary by browser; use a local server or GitHub Pages for reliable storage and PWA installation.
+- **Local server:** From the project directory, run `python -m http.server 8000`, then open `http://localhost:8000`.
+- **PWA and service worker:** Run over HTTPS (including GitHub Pages) or localhost. Service workers do not run from `file://`.
 
-## انتشار روی GitHub Pages
+## Publish with GitHub Pages
 
-1. این پوشه را به یک مخزن GitHub جدید push کنید. برای نمونه:
+1. Push this directory to a new GitHub repository. For example:
    ```sh
    git init
    git add .
@@ -19,40 +19,40 @@
    git remote add origin https://github.com/USERNAME/REPOSITORY.git
    git push -u origin main
    ```
-2. در مخزن، **Settings → Pages** را انتخاب کنید؛ در **Build and deployment**، گزینهٔ **Deploy from a branch** و شاخهٔ `main` / پوشهٔ `/ (root)` را انتخاب و ذخیره کنید.
-3. پس از پایان انتشار، نشانی نمایش‌داده‌شده را باز کنید. همهٔ منابع با مسیر نسبی (`./`) ارجاع شده‌اند تا در مسیر زیرپوشهٔ مخزن نیز کار کنند.
+2. In the repository, open **Settings → Pages**. Under **Build and deployment**, select **Deploy from a branch**, choose `main` and `/ (root)`, then save.
+3. When deployment finishes, open the published URL. Assets use relative (`./`) paths, so the app also works from a repository subpath.
 
-## قابلیت‌ها
+## Features and progression
 
-- تاریخ امروز با منطقهٔ زمانی دستگاه؛ شمارهٔ روز شمسی با `Intl.DateTimeFormat('en-US-u-ca-persian')` تعیین زوج/فرد است. اگر تقویم فارسی در موتور مرورگر نباشد، جایگزین میلادی به‌روشنی اعلام می‌شود.
-- روز آغاز در اولین اجرا به‌صورت تاریخ محلی `YYYY-MM-DD` ثبت می‌شود؛ گذر روزها با محاسبهٔ UTC روی تاریخِ بدون ساعت است. سالگرد سه‌ساله تقویمی است.
-- دو بلوک مطالعهٔ روزانهٔ ۴۵ دقیقه‌ای از شش رشتهٔ نام‌برده، بازیابی فعال ۱۵ دقیقه‌ای، برنامهٔ تمرکز و خواندن ۲۰ دقیقه‌ای چرخشی ۱۴روزه، مدیتیشن، تمرین‌های بازی‌وارسازی و عادت‌های انتخابی.
-- مطالعه و بازیابی بالاترین XP پایه را می‌گیرند. XP روزانه از وضعیت جاری محاسبه می‌شود؛ تیک‌زدن مجدد امتیاز تکراری نمی‌سازد و برداشتن تیک امتیاز را حذف می‌کند. آب و ثبت قند XP یا جریمه ندارند.
-- رنک‌ها به XP **و** مدت سابقه وابسته‌اند. S: حداقل 150,000 XP و 548 روز. رنک آخر: حداقل 210,000 XP و گذشت سالگرد سه‌ساله (1095 روز حداقل نمایشی). پاداش هفتگی 250 XP برای پنج روز مطالعه، 150 XP برای سه روز تمرکز، هر هفته فقط یک claim (در صورت بازشدن هر دو، هر دو پاداش یکجا و فقط یک بار).
-- خروجی/ورودی نسخه‌دار JSON، تأیید پیش از جایگزینی یا پاک‌کردن، پروندهٔ قابل‌ویرایش، سوابق وزن، سابقهٔ هفتگی و تایمر تمرکز.
+- The current date uses the device's local time zone. The Persian calendar day number is obtained with `Intl.DateTimeFormat('en-US-u-ca-persian')` to choose even/odd workout days. If the browser does not support the calendar, a Gregorian fallback is clearly identified.
+- The start date is saved on first launch as local `YYYY-MM-DD`. Elapsed days are calculated in UTC from date-only values; the three-year milestone uses calendar-year arithmetic.
+- Daily activities include two 45-minute study blocks from six named subjects, 15-minute active recall, a rotating 14-day focus and reading plan, meditation, gamified exercise, and optional habits.
+- Study and recall have the highest base XP. Daily XP is derived from current statuses: checking a task again does not duplicate points, and unchecking removes them. Water and sugar tracking award or deduct no XP.
+- Ranks require both XP and elapsed time. S-Rank requires at least 150,000 XP and 548 days. The top rank requires 210,000 XP and the three-year milestone (1,095 displayed days minimum). Weekly rewards are 250 XP for five study days and 150 XP for three focus days. A weekly claim is available once; if both rewards are unlocked, both are granted together.
+- Includes versioned JSON export/import, confirmation before replacing or clearing data, an editable profile, weight history, weekly history, and a focus timer.
 
-## ایمنی، سلامت و واقع‌گرایی
+## Safety, health, and realism
 
-شنا، درازونشست و پلانک با `روز سپری‌شده + مقدار شروع` نمایش داده می‌شوند؛ رشد روزانهٔ بی‌نهایت برنامهٔ تمرینی امنی نیست و اعداد صرفاً هدف بازی‌اند، نه نسخهٔ بالینی. در درد تمرین را متوقف کنید و استراحت/جایگزین کم‌شدت را انتخاب کنید. حالت ریکاوری به‌عنوان انجام کامل گزارش نمی‌شود و XP کمتری دارد. شدت ورزش را متناسب با آمادگی تنظیم کنید؛ یک ساعت الزام نیست.
+Swimming, sit-ups, and planks are displayed as elapsed days plus a starting value. Unlimited daily increases are not a safe training plan; these values are game targets, not clinical prescriptions. Stop exercising if you feel pain and rest or choose a lower-intensity alternative. Recovery mode is not counted as a full completion and awards less XP. Match exercise intensity to your fitness; an hour is not mandatory.
 
-اپ برای سن یا جنسیت مقدار فرضی نمی‌سازد، BMI تشخیصی یا هدف کالری تعیین نمی‌کند و ثبت کالری صرفاً دفترچه است. نیاز تغذیه و خواب افراد متفاوت است؛ برای تصمیم پزشکی از متخصص کمک بگیرید. مدیتیشن اختیاری است و اگر ناراحت‌کننده شد متوقف شود. ادعاهای چشم سوم، چاکرا، جادو یا نکرومنسی در برنامه اهداف نمادین/داستانی‌اند؛ هیچ قدرت فراطبیعی تضمین‌شده‌ای اثبات نشده است. از آیین‌ها/تمرین‌هایی که خواب را مختل می‌کنند پرهیز کنید.
+The app does not assume an age or gender, provide a diagnostic BMI or set a calorie goal. Calorie logging is only a personal journal. Nutrition and sleep needs vary; consult a qualified professional for medical decisions. Meditation is optional and should be stopped if uncomfortable. Third-eye, chakra, magic, and necromancy themes are symbolic or fictional goals; no supernatural powers are guaranteed or established. Avoid rituals or practices that disrupt sleep.
 
-منابع عمومی برای مطالعهٔ ایمنی و شواهد (پیوندهای متنی):
-- CDC، توصیه‌های فعالیت بدنی بزرگسالان: https://www.cdc.gov/physical-activity-basics/guidelines/adults.html
-- ACSM، مقاومت‌ورزی (به‌روزرسانی ۲۰۲۶): https://acsm.org/education-resources/trending-topics-resources/physical-activity-guidelines/
-- مرور پژوهشی مرتبط با تمرین و شناخت، PMID 30127731: https://pubmed.ncbi.nlm.nih.gov/30127731/
-- مرور پژوهشی مرتبط با فعالیت بدنی، PMID 41021694: https://pubmed.ncbi.nlm.nih.gov/41021694/
+General references for safety and evidence:
+- CDC, physical activity guidelines for adults: https://www.cdc.gov/physical-activity-basics/guidelines/adults.html
+- ACSM, resistance training (2026 update): https://acsm.org/education-resources/trending-topics-resources/physical-activity-guidelines/
+- Research review related to exercise and cognition, PMID 30127731: https://pubmed.ncbi.nlm.nih.gov/30127731/
+- Research review related to physical activity, PMID 41021694: https://pubmed.ncbi.nlm.nih.gov/41021694/
 
-## داده و حریم خصوصی
+## Data and privacy
 
-هیچ سرور، حساب یا همگام‌سازی ابری وجود ندارد. وضعیت‌ها در `localStorage` مرورگر همان دستگاه و مبدأ ذخیره می‌شوند. پاک‌کردن داده‌های مرورگر، حالت خصوصی یا تغییر مبدأ ممکن است داده را از دسترس خارج کند. قبل از تعویض دستگاه یا پاک‌سازی، از دکمهٔ خروجی JSON نسخهٔ پشتیبان بگیرید. فایل ورودی باید `schemaVersion: 1` و داده‌های معتبر داشته باشد؛ همیشه فقط فایل مورداعتماد خود را وارد کنید.
+There is no server, account, or cloud sync. State is stored in the browser's `localStorage` for the same device and origin. Clearing browser data, using private browsing, or changing origin may make data unavailable. Export a JSON backup before changing devices or clearing data. Imports must have `schemaVersion: 1` and valid data; only import files you trust.
 
-## توسعه و آزمون
+## Development and tests
 
-نیازمند Node.js 18 یا جدیدتر؛ بدون نصب وابستگی:
+Requires Node.js 18 or later; no dependency installation is needed:
 
 ```sh
 npm test
 ```
 
-منطق مستقل در `logic.js` است و برای سازگاری مرورگر کلاسیک، `window.ShadowLogic` را فراهم می‌کند؛ در Node به‌صورت CommonJS نیز قابل آزمون است.
+Core logic lives in `logic.js`. It exposes `window.ShadowLogic` for classic-script browser compatibility and CommonJS for Node.js tests.
