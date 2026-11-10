@@ -24,7 +24,7 @@ A standalone, offline-first progressive web app for tracking study, focus, and d
 
 ## Features and progression
 
-- The current date uses the device's local time zone. The Persian calendar day number is obtained with `Intl.DateTimeFormat('en-US-u-ca-persian')` to choose even/odd workout days. If the browser does not support the calendar, a Gregorian fallback is clearly identified.
+- The live clock and current date use the `Asia/Tehran` time zone; the clock refreshes every second and daily views roll over at Tehran midnight. The Persian calendar day number is obtained with `Intl.DateTimeFormat('en-US-u-ca-persian')` to choose even/odd workout days. If the browser does not support the calendar, a Gregorian fallback is clearly identified.
 - The start date is saved on first launch as local `YYYY-MM-DD`. Elapsed days are calculated in UTC from date-only values; the three-year milestone uses calendar-year arithmetic.
 - Daily activities include two 45-minute study blocks from six named subjects, 15-minute active recall, a rotating 14-day focus and reading plan, meditation, gamified exercise, and optional habits.
 - Study and recall have the highest base XP. Daily XP is derived from current statuses: checking a task again does not duplicate points, and unchecking removes them. Water and sugar tracking award or deduct no XP.
